@@ -24,10 +24,10 @@ ap.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'))
 })
 
-const apolloServerStart = async (typeDefs, resolvers) =>{
+const apolloServerRun = async (typeDefs, resolvers) =>{
     await server.start();
     server.applyMiddleware({ap});
-    db.once('once', () => {
+    db.once('open', () => {
         ap.listen(PORT, () => {
             console.log(`API on ${PORT}`);
             console.log(`GraphQl on http://localhost:${PORT}${server.graphqlPath}`)
@@ -35,4 +35,4 @@ const apolloServerStart = async (typeDefs, resolvers) =>{
     })
 }
 
-apolloServerStart(typeDefs, resolvers);
+apolloServerRun(typeDefs, resolvers);
