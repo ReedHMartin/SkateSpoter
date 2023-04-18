@@ -9,7 +9,9 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-// import Home from './pages/Home';
+import Header from './components/Header/Header'
+import Navbar from './components/Nav/Nav';
+import Profile from '../src/components/UserProfile/UserProfile'
 // import Login from './pages/Login';
 // import Nav from './components/Nav';
 // import NoMatch from './pages/NoMatch';
@@ -36,6 +38,20 @@ const client = new ApolloClient({
 
 function App() {
   return (
+	<ApolloProvider client={client}>
+		<Router>
+			<Header/>
+				<Navbar/>
+				<Routes>
+					<Route path={'/'} element={} />
+					<Route path={'/profile'} element={<Profile />} />
+					<Route path={'/:skateSpotId'} element={}/>
+					<Route path={'/newspot'} element={}/>
+					<Route path={'/login'} element={}/>
+					<Route path={'/signup'} element={}/>
+				</Routes>
+		</Router>
+	</ApolloProvider>
  
   );
 }
