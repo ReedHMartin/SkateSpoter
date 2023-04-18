@@ -1,19 +1,22 @@
+const { AuthenticationError } = require("apollo-server-express");
 const { User, skateSpot } = require("./models");
-const { signToken, authMiddleware } = require("./utils/auth");
+const { signToken } = require("./utils/auth");
 
 const resolvers = {
   Query: {
-    users: async () => {
-      return await User.find();
-    },
-    user: async (parent, { username }) => {
-      return await User.findOne({ username });
+    user: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findOne({ _id: context.user._id }).populate(
+          "skateSpot"
+        );
+      }
+      throw new AuthenticationError("please login");
     },
     skateSpots: async () => {
       return await skateSpot.find();
     },
-    skateSpot: async (parent, { name }) => {
-      return await skateSpot.findOne({ name });
+    skateSpot: async (parent, { skateSpotId }) => {
+      return await skateSpot.findOne({ _id: skateSpotId });
     },
   },
 
@@ -21,6 +24,10 @@ const resolvers = {
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
       const token = signToken(user);
+
+      if (!user) {
+        throw new AuthenticationError("error");
+      }
       return { token, user };
     },
     login: async (parent, { email, password }) => {
@@ -39,13 +46,24 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addSkateSpot: async (parent, { location, name, lighting, police_presence, pedestrians, typeOf }, context) => {
+    addSkateSpot: async (
+      parent,
+      { location, name, lighting, police_presence, pedestrians, typeOf },
+      context
+    ) => {
       if (context.user) {
-        const newSkateSpot = await skateSpot.create({ location, name, lighting, police_presence, pedestrians, typeOf });
+        const newSkateSpot = await skateSpot.create({
+          location,
+          name,
+          lighting,
+          police_presence,
+          pedestrians,
+          typeOf,
+        });
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { skateSpot: newSkateSpot._id } },
+          { $addToSet: { skateSpot: newSkateSpot._id } },
           { new: true }
         );
 
