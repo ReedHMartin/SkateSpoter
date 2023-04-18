@@ -36,10 +36,10 @@ export default
       }
     
       return (
-        <><header>
+        <><div>
           <h2>Join and Find your Perfect Spot</h2>
           <p>Enter your nickname, email, and password to get started with us</p>
-        </header>
+        </div>
         <div>
             <form id="signupForm" onSubmit={handleSubmit}>
               <input type="text" name="username "placeholder="Username" value={username} onChange={handleUsernameChange} />
