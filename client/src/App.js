@@ -36,6 +36,20 @@ const client = new ApolloClient({
 
 function App() {
   return (
+	<ApolloProvider client={client}>
+		<Router>
+			<Header/>
+				<Navbar/>
+				<Routes>
+					<Route path={'/'} element={} />
+					<Route path={'/profile'} element={} />
+					<Route path={'/:skateSpotId'} element={}/>
+					<Route path={'/login'}
+				</Routes>
+				
+			
+		</Router>
+	</ApolloProvider>
  
   );
 }
