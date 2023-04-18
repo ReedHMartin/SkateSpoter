@@ -21,3 +21,15 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_SKATESPOT = gql`
+mutation addSkateSpot($location:String!, name:String!, lighting:Int, police_presence:Array, pedestrians:Int, typeof:String!){
+  addSkateSpot(location:$location, name:$name, lighting:$lighting, police_presence:$police_presence, pedestrians:$pedestrians, typeof:$typeof){
+    location
+    name
+    lighting
+    police_presence 
+    pedestrians 
+    typeof
+  }
+}`;

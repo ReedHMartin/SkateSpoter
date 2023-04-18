@@ -18,9 +18,22 @@ export const QUERY_PROFILE = gql`
   }
 `;
 
+export const QUERY_SKATESPOTS = gql`
+  query skateSpots {
+    skateSpots {
+      _id
+      location
+      name
+      lighting
+      police_presence
+      pedestrians
+      typeof
+    }
+  }
+`;
 export const QUERY_SKATESPOT = gql`
-  query skateSpot {
-    skateSpot {
+  query skateSpot($skateSpotId: ID!) {
+    skateSpot(skateSpotId: $skateSpotId) {
       _id
       location
       name
