@@ -12,9 +12,32 @@ const typeDefs = gql`
     location: String!
     name: String!
     lighting: Int
-    police_presence: Array
+    police_presence: [String]
     pedestrians: Int
     typeOf: String
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
+  type Query {
+    user: User
+    skatespots: [skateSpot]
+    skatespot(skateSpotId: ID!): skateSpot
+  }
+  type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    addSkateSpot(
+      location: String!
+      name: String!
+      lighting: Int
+      police_presence: [String]
+      pedestrians: Int
+      typeOf: String
+    ): skateSpot
   }
 `;
 

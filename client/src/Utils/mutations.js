@@ -30,6 +30,6 @@ mutation addSkateSpot($location:String!, name:String!, lighting:Int, police_pres
     lighting
     police_presence 
     pedestrians 
-    typeof
+    typeOf
   }
 }`;
