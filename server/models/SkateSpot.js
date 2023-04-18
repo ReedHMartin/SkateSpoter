@@ -11,7 +11,7 @@ const spotSchema = new Schema({
     required: true,
   },
   lighting: {
-    type: Number,
+    type: Int,
     maxlength: 10,
   },
   police_presence: {
@@ -19,7 +19,7 @@ const spotSchema = new Schema({
     anyOf: [["Red"], ["Yellow"], ["Green"]],
   },
   pedestrians: {
-    type: Number,
+    type: Int,
     maxlength: 10,
   },
   typeOf: {
