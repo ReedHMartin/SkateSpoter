@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Profile() {
+export default function SingleSkate() {
   return (
     <div>
-      <h2>Welcome</h2>
+      <h2>Skate Spot!</h2>
     </div>
   );
 }

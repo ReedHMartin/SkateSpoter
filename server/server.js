@@ -26,7 +26,7 @@ ap.get("/", (req, res) => {
 
 const apolloServerRun = async (typeDefs, resolvers) => {
   await server.start();
-  server.applyMiddleware({ ap });
+  server.applyMiddleware({ app: ap });
   db.once("open", () => {
     ap.listen(PORT, () => {
       console.log(`API on ${PORT}`);

@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const spotSchema = new Schema({
@@ -11,7 +12,7 @@ const spotSchema = new Schema({
     required: true,
   },
   lighting: {
-    type: Int,
+    type: Number,
     maxlength: 10,
   },
   police_presence: {
@@ -19,7 +20,7 @@ const spotSchema = new Schema({
     anyOf: [["Red"], ["Yellow"], ["Green"]],
   },
   pedestrians: {
-    type: Int,
+    type: Number,
     maxlength: 10,
   },
   typeOf: {

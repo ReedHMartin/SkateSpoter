@@ -1,6 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, skateSpot } = require("./models");
-const { signToken } = require("./utils/auth");
+const { User, skateSpot } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
@@ -12,10 +12,10 @@ const resolvers = {
       }
       throw new AuthenticationError("please login");
     },
-    skateSpots: async () => {
+    skatespots: async () => {
       return await skateSpot.find();
     },
-    skateSpot: async (parent, { skateSpotId }) => {
+    skatespot: async (parent, { skateSpotId }) => {
       return await skateSpot.findOne({ _id: skateSpotId });
     },
   },

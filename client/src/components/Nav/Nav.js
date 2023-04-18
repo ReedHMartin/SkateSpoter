@@ -6,7 +6,7 @@ import Auth from "../../Utils/auth";
 export default function Navbar() {
   const [activeItem, setActiveItem] = useState("home");
 
-  handleItemClick = (e, { name }) => setActiveItem(name);
+  const handleItemClick = (e, { name }) => setActiveItem(name);
 
   return (
     <Menu fluid widths={3}>
@@ -42,14 +42,14 @@ export default function Navbar() {
       ) : (
         <>
           <Menu.Item
-            name="new spot"
+            name="Login"
             active={activeItem === "login"}
             onClick={handleItemClick}
             as={Link}
             to="/login"
           />
           <Menu.Item
-            name="sign up"
+            name="Sign Up"
             active={activeItem === "signup"}
             onClick={handleItemClick}
             as={Link}

@@ -1,9 +1,9 @@
 import React from "react";
 
-export default function Profile() {
+export default function SkateSpots() {
   return (
     <div>
-      <h2>Welcome</h2>
+      <h2>Skate Spots!</h2>
     </div>
   );
 }
