@@ -12,7 +12,7 @@ export const QUERY_PROFILE = gql`
         lighting
         police_presence
         pedestrians
-        typeof
+        typeOf
       }
     }
   }
@@ -27,7 +27,7 @@ export const QUERY_SKATESPOTS = gql`
       lighting
       police_presence
       pedestrians
-      typeof
+      typeOf
     }
   }
 `;
@@ -40,7 +40,7 @@ export const QUERY_SKATESPOT = gql`
       lighting
       police_presence
       pedestrians
-      typeof
+      typeOf
     }
   }
 `;
