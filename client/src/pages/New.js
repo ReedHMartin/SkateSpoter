@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { ADD_SKATESPOT } from "../Utils/mutations";
+import { QUERY_PROFILE, QUERY_SKATESPOTS } from "../Utils/queries";
 import Auth from "../Utils/auth";
 
 export default function NewSkateSpot() {
@@ -14,7 +15,27 @@ export default function NewSkateSpot() {
     typeOf: "",
   });
   const [wrongTwo, setWrongTwo] = useState("");
-  const [addSkateSpot, { error }] = useMutation(ADD_SKATESPOT);
+  const [addSkateSpot, { error }] = useMutation(ADD_SKATESPOT, {
+    update(cache, { data: { addSkateSpot } }) {
+      try {
+        const { skateSpots } = cache.readQuery({ query: QUERY_SKATESPOTS });
+        cache.writeQuery({
+          query: QUERY_SKATESPOTS,
+          data: { skateSpots: [addSkateSpot, ...skateSpots] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      const { user } = cache.readQuery({ query: QUERY_PROFILE });
+      cache.writeQuery({
+        query: QUERY_PROFILE,
+        data: {
+          user: { ...user, skateSpots: [...user.skateSpots, addSkateSpot] },
+        },
+      });
+    },
+  });
 
   const handleSkateSpot = async (e) => {
     e.preventDefault();
