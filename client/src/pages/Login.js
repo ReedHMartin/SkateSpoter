@@ -18,6 +18,9 @@ export default function Login() {
     console.log("Username:", username, "Password:", password);
   };
 
+
+export default function login() {
+
   return (
     <div>
       <h2>Login</h2>
