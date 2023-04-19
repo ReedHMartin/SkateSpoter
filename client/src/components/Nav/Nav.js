@@ -4,7 +4,7 @@ import { Button, Menu } from "semantic-ui-react";
 import Auth from "../../Utils/auth";
 
 export default function Navbar() {
-  const [activeItem, setActiveItem] = useState("home");
+  const [activeItem, setActiveItem] = useState("");
 
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
