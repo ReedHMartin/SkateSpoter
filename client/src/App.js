@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useParams,
+} from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -37,6 +42,8 @@ const client = new ApolloClient({
 });
 
 function App() {
+  let { skateSpotId } = useParams();
+
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -49,6 +56,7 @@ function App() {
           <Route path={"/newspot"} element={<NewSkateSpot />} />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/signup"} element={<Sign />} />
+          {/* <Route path="*" element={<h1>Nothing here</h1>} /> */}
         </Routes>
       </Router>
     </ApolloProvider>
