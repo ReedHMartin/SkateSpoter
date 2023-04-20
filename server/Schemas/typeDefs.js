@@ -24,6 +24,7 @@ const typeDefs = gql`
 
   type Query {
     user: User
+    users: [User]
     skatespots: [skateSpot]
     skatespot(skateSpotId: ID!): skateSpot
   }
