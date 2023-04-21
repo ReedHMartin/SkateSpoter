@@ -7,6 +7,7 @@ export const QUERY_PROFILE = gql`
       username
       email
       skateSpot {
+        _id
         location
         name
         lighting
