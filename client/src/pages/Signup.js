@@ -31,7 +31,7 @@ export default function SignUpPage() {
         const { data } = await addUser({
           variables: { ...signupForm },
         });
-        Author.login(data.createUser.token);
+        Author.login(data.addUser.token);
       } catch (error) {
         console.error(error);
         setWrongThree("something went wrong");

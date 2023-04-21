@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const { Schema, model } = mongoose;
 
 const spotSchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   location: {
     type: String,
     required: true,

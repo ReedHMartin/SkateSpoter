@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Profile() {
   const { loading, data } = useQuery(QUERY_PROFILE);
-  const user = data?.user || [];
+  const user = data?.user || {};
   return (
     <div>
       {loading ? (
@@ -14,16 +14,16 @@ export default function Profile() {
       ) : (
         <div>
           <h2>Welcome {user.username}</h2>
-          {user.map((use) => (
+          {user.skateSpot.map((use) => (
             <Card.Group key={use._id}>
               <Card>
                 <Card.Content>
-                  <Card.Header>{use.skateSpots.name}</Card.Header>
-                  <Card.Description>{use.skateSpots.location}</Card.Description>
+                  <Card.Header>{use.skateSpot.name}</Card.Header>
+                  <Card.Description>{use.skateSpot.location}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <div className="ui button">
-                    <Link to={`/${use.skateSpots.id}`}>
+                    <Link to={`/${use.skateSpot.id}`}>
                       <Button basic color="blue">
                         See more
                       </Button>
