@@ -18,12 +18,12 @@ export default function Profile() {
             <Card.Group key={use._id}>
               <Card>
                 <Card.Content>
-                  <Card.Header>{use.skateSpot.name}</Card.Header>
-                  <Card.Description>{use.skateSpot.location}</Card.Description>
+                  <Card.Header>{use.name}</Card.Header>
+                  <Card.Description>{use.location}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <div className="ui button">
-                    <Link to={`/${use.skateSpot.id}`}>
+                    <Link to={`/skateSpots/${use._id}`}>
                       <Button basic color="blue">
                         See more
                       </Button>
