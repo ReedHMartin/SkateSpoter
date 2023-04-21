@@ -6,12 +6,14 @@ import { QUERY_PROFILE, QUERY_SKATESPOTS } from "../Utils/queries";
 import Auth from "../Utils/auth";
 
 export default function NewSkateSpot() {
+  console.log(Auth.getProfile().data._id);
   const [formInfoState, setforminfo] = useState({
+    userId: Auth.getProfile().data._id,
     location: "",
     name: "",
-    lighting: "",
+    lighting: null,
     police_presence: "",
-    pedestrian: "",
+    pedestrian: null,
     typeOf: "",
   });
   const [wrongTwo, setWrongTwo] = useState("");
@@ -23,17 +25,16 @@ export default function NewSkateSpot() {
           query: QUERY_SKATESPOTS,
           data: { skateSpots: [addSkateSpot, ...skateSpots] },
         });
+        const { user } = cache.readQuery({ query: QUERY_PROFILE });
+        cache.writeQuery({
+          query: QUERY_PROFILE,
+          data: {
+            user: { ...user, skateSpots: [...user.skateSpots, addSkateSpot] },
+          },
+        });
       } catch (e) {
         console.error(e);
       }
-
-      const { user } = cache.readQuery({ query: QUERY_PROFILE });
-      cache.writeQuery({
-        query: QUERY_PROFILE,
-        data: {
-          user: { ...user, skateSpots: [...user.skateSpots, addSkateSpot] },
-        },
-      });
     },
   });
 
@@ -64,9 +65,9 @@ export default function NewSkateSpot() {
     } else if (name === "police_presence") {
       setforminfo({ ...formInfoState, [name]: value });
     } else if (name === "lighting") {
-      setforminfo({ ...formInfoState, [name]: value });
+      setforminfo({ ...formInfoState, [name]: parseInt(value) });
     } else if (name === "pedestrian") {
-      setforminfo({ ...formInfoState, [name]: value });
+      setforminfo({ ...formInfoState, [name]: parseInt(value) });
     } else if (name === "typeOf") {
       setforminfo({ ...formInfoState, [name]: value });
     }

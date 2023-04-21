@@ -17,11 +17,14 @@ export const QUERY_PROFILE = gql`
     }
   }
 `;
-
+// prettier-ignore
 export const QUERY_SKATESPOTS = gql`
   query skateSpots {
     skateSpots {
       _id
+      userId{
+        username
+      }
       location
       name
       lighting
@@ -31,10 +34,14 @@ export const QUERY_SKATESPOTS = gql`
     }
   }
 `;
+// prettier-ignore
 export const QUERY_SKATESPOT = gql`
   query skateSpot($skateSpotId: ID!) {
     skateSpot(skateSpotId: $skateSpotId) {
       _id
+      userId{
+        username
+      }
       location
       name
       lighting

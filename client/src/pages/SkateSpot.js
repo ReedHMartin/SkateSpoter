@@ -18,12 +18,12 @@ export default function SkateSpots() {
             <Card>
               <Card.Content>
                 <Card.Header>{skateSpot.name}</Card.Header>
-                <Card.Meta>Posted by User.username</Card.Meta>
+                <Card.Meta>Posted by {skateSpot.userId.username}</Card.Meta>
                 <Card.Description>{skateSpot.location}</Card.Description>
               </Card.Content>
               <Card.Content extra>
                 <div className="ui button">
-                  <Link to={`/${skateSpot.id}`}>
+                  <Link to={`/skateSpots/${skateSpot._id}`}>
                     <Button basic color="blue">
                       See more
                     </Button>

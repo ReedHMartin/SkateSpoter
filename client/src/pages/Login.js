@@ -5,7 +5,7 @@ import Author from "../Utils/auth";
 
 export default function Login() {
   const [loginInf, setLogin] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const [wrongOne, setWrongOne] = useState("");
@@ -31,7 +31,7 @@ export default function Login() {
       setWrongOne("something is wrong");
     }
 
-    console.log("Username:", loginInf.username, "Password:", loginInf.password);
+    console.log("Email:", loginInf.email, "Password:", loginInf.password);
   };
 
   return (
@@ -39,11 +39,11 @@ export default function Login() {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Username:
+          Email:
           <input
-            name="username"
+            name="email"
             type="text"
-            value={loginInf.username}
+            value={loginInf.email}
             onChange={handleLoginChange}
           />
         </label>
@@ -58,10 +58,7 @@ export default function Login() {
           />
         </label>
         <br />
-        <button
-          disabled={!(loginInf.username && loginInf.password)}
-          type="submit"
-        >
+        <button disabled={!(loginInf.email && loginInf.password)} type="submit">
           Login
         </button>
         {wrongOne && <h4>{wrongOne}</h4>}
