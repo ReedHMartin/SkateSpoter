@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { Card, Button } from "semantic-ui-react";
 import { QUERY_PROFILE } from "../../Utils/queries";
 import { Link } from "react-router-dom";
+import "../Styles/profile.css";
 
 export default function Profile() {
   const { loading, data } = useQuery(QUERY_PROFILE);
@@ -10,13 +11,19 @@ export default function Profile() {
   return (
     <div>
       {loading ? (
-        <h3>Setting Up Your Profile...</h3>
+        <h3 className="loading1">Setting Up Your Profile...</h3>
       ) : (
         <div>
-          <h2>Welcome {user.username}</h2>
+          <h2 className="welcoming">Welcome {user.username}</h2>
           {user.skateSpot.map((use) => (
-            <Card.Group key={use._id}>
-              <Card>
+            <Card.Group className="centered" itemsPerRow={2} key={use._id}>
+              <Card
+                style={{
+                  backgroundColor: "#643c38",
+                  borderRadius: "80px",
+                  marginTop: "40px",
+                }}
+              >
                 <Card.Content>
                   <Card.Header>{use.name}</Card.Header>
                   <Card.Description>{use.location}</Card.Description>
@@ -24,9 +31,7 @@ export default function Profile() {
                 <Card.Content extra>
                   <div className="ui button">
                     <Link to={`/skateSpots/${use._id}`}>
-                      <Button basic color="blue">
-                        See more
-                      </Button>
+                      <Button>See more</Button>
                     </Link>
                   </div>
                 </Card.Content>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../Utils/mutations";
+import { Form, Button } from "semantic-ui-react";
+import "../components/Styles/login.css";
 import Author from "../Utils/auth";
 
 export default function Login() {
@@ -36,33 +38,33 @@ export default function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
+      <h2 className="login1">Login</h2>
+      <Form className="container" onSubmit={handleSubmit}>
+        <Form.Field>
+          <label>Email</label>
           <input
             name="email"
             type="text"
             value={loginInf.email}
             onChange={handleLoginChange}
+            placeholder="Email"
           />
-        </label>
-        <br />
-        <label>
-          Password:
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
           <input
             name="password"
             type="password"
             value={loginInf.password}
             onChange={handleLoginChange}
+            placeholder="Password"
           />
-        </label>
-        <br />
-        <button disabled={!(loginInf.email && loginInf.password)} type="submit">
+        </Form.Field>
+        <Button disabled={!(loginInf.email && loginInf.password)} type="submit">
           Login
-        </button>
+        </Button>
         {wrongOne && <h4>{wrongOne}</h4>}
-      </form>
+      </Form>
     </div>
   );
 }
