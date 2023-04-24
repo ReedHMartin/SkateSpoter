@@ -1,0 +1,21 @@
+body {
+  background: #f27d0c;
+}
+
+h2.group {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.ui.card {
+  text-align: center;
+}
+
+h3.loading2{
+  text-align: center;
+}
+/* .card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} */

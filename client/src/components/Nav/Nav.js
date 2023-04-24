@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Menu } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 import Auth from "../../Utils/auth";
+import "../Styles/nav.css";
 
 export default function Navbar() {
   const [activeItem, setActiveItem] = useState("");
@@ -9,54 +10,56 @@ export default function Navbar() {
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
   return (
-    <Menu fluid widths={3}>
-      <Menu.Item
-        name="home"
-        active={activeItem === "home"}
-        onClick={handleItemClick}
-        as={Link}
-        to="/"
-      />
-      {Auth.loggedIn() ? (
-        <>
-          <Menu.Item
-            name="profile"
-            active={activeItem === "profile"}
-            onClick={handleItemClick}
-            as={Link}
-            to="/profile"
-          />
-          <Menu.Item
-            name="new spot"
-            active={activeItem === "new spot"}
-            onClick={handleItemClick}
-            as={Link}
-            to="/newspot"
-          />
-          <Menu.Item>
-            <Button primary onClick={Auth.logout}>
-              Logout
-            </Button>
-          </Menu.Item>
-        </>
-      ) : (
-        <>
-          <Menu.Item
-            name="Login"
-            active={activeItem === "login"}
-            onClick={handleItemClick}
-            as={Link}
-            to="/login"
-          />
-          <Menu.Item
-            name="Sign Up"
-            active={activeItem === "signup"}
-            onClick={handleItemClick}
-            as={Link}
-            to="/signup"
-          />
-        </>
-      )}
-    </Menu>
+    <div className="nav">
+      <Menu className="nav" fluid widths={4}>
+        <Menu.Item
+          name="Home"
+          active={activeItem === "Home"}
+          onClick={handleItemClick}
+          as={Link}
+          to="/"
+        />
+        {Auth.loggedIn() ? (
+          <>
+            <Menu.Item
+              name="Profile"
+              active={activeItem === "Profile"}
+              onClick={handleItemClick}
+              as={Link}
+              to="/profile"
+            />
+            <Menu.Item
+              name="New Spot"
+              active={activeItem === "New Spot"}
+              onClick={handleItemClick}
+              as={Link}
+              to="/newspot"
+            />
+            <Menu.Item
+              name="Logout"
+              active={activeItem === "Logout"}
+              onClick={Auth.logout}
+            />
+          </>
+        ) : (
+          <>
+            <Menu.Item
+              name="Login"
+              active={activeItem === "login"}
+              onClick={handleItemClick}
+              as={Link}
+              to="/login"
+            />
+            <Menu.Item
+              name="Sign Up"
+              active={activeItem === "signup"}
+              onClick={handleItemClick}
+              as={Link}
+              to="/signup"
+            />
+          </>
+        )}
+      </Menu>
+    </div>
   );
 }
