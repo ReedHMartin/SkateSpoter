@@ -7,11 +7,13 @@ h2.newSkate {
 
 #submit{
   outline-color: black;
-  background-color: antiquewhite;
+  background-color: rgb(255, 239, 218);
 }
 
 #submit:hover{
   cursor: pointer;
+  background-color: black;
+  color: #e3e3e3;
   outline-offset: 3px;
 }
 
