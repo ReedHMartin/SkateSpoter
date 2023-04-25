@@ -1,0 +1,18 @@
+h2.join {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 36px;
+  color: #d4a0a7;
+  font-family: 'Bangers', cursive;
+  font-stretch: extra-expanded;
+}
+
+p.high {
+  text-align: center;
+  margin-top: 10px;
+  color: #d4a0a7;
+}
+
+#form{
+  background-color: #bebebe;
+}

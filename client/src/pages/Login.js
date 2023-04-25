@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../Utils/mutations";
+import { Form, Button } from "semantic-ui-react";
+import "../components/Styles/login.css";
 import Author from "../Utils/auth";
 
 export default function Login() {
   const [loginInf, setLogin] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   const [wrongOne, setWrongOne] = useState("");
@@ -31,41 +33,38 @@ export default function Login() {
       setWrongOne("something is wrong");
     }
 
-    console.log("Username:", loginInf.username, "Password:", loginInf.password);
+    console.log("Email:", loginInf.email, "Password:", loginInf.password);
   };
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Username:
+      <h2 className="login1">Login</h2>
+      <Form className="container" id="form" onSubmit={handleSubmit}>
+        <Form.Field>
+          <label>Email</label>
           <input
-            name="username"
+            name="email"
             type="text"
-            value={loginInf.username}
+            value={loginInf.email}
             onChange={handleLoginChange}
+            placeholder="Email"
           />
-        </label>
-        <br />
-        <label>
-          Password:
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
           <input
             name="password"
             type="password"
             value={loginInf.password}
             onChange={handleLoginChange}
+            placeholder="Password"
           />
-        </label>
-        <br />
-        <button
-          disabled={!(loginInf.username && loginInf.password)}
-          type="submit"
-        >
+        </Form.Field>
+        <Button disabled={!(loginInf.email && loginInf.password)} type="submit">
           Login
-        </button>
+        </Button>
         {wrongOne && <h4>{wrongOne}</h4>}
-      </form>
+      </Form>
     </div>
   );
 }

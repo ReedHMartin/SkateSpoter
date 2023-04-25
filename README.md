@@ -1,3 +1,23 @@
+# SkateSpotter
+
+A message board-style application for skaters, for the purpose of discovering and sharing locations that have something for those who skate.
+
+Not limited to strictly skateboards, SkateSpotter enables a network of enthusiasts to share locations that have unique surfaces, potential trick surfaces, or "situational awareness" commentary.  These locations can include:
+
+* Unique features like rails or ramps.
+* Public skate parks.
+* How adequate the lighting is.
+* Grading the security presence there might be.
+* Location address for independent searching (sorry, no map functions yet).
+* And more!
+
+Future plans include potential monetization via ads or placed sponsorships, potential photos of the locations (especially helpful if the address is not known), commentary on others' offered locations, and recommended skill levels.
+
+This has been created by several skating enthusiasts, with an eye towards what skaters want.
+
+Please note: you will need to create an account to use this app, but it is recommended to use your handle instead of name.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

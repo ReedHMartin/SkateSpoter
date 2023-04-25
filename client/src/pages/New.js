@@ -4,37 +4,31 @@ import { useMutation } from "@apollo/client";
 import { ADD_SKATESPOT } from "../Utils/mutations";
 import { QUERY_PROFILE, QUERY_SKATESPOTS } from "../Utils/queries";
 import Auth from "../Utils/auth";
+import "../components/Styles/new.css";
 
 export default function NewSkateSpot() {
+  console.log(Auth.getProfile().data._id);
   const [formInfoState, setforminfo] = useState({
+    userId: Auth.getProfile().data._id,
     location: "",
     name: "",
-    lighting: "",
+    lighting: null,
     police_presence: "",
-    pedestrian: "",
+    pedestrians: null,
     typeOf: "",
   });
   const [wrongTwo, setWrongTwo] = useState("");
   const [addSkateSpot, { error }] = useMutation(ADD_SKATESPOT, {
-    update(cache, { data: { addSkateSpot } }) {
-      try {
-        const { skateSpots } = cache.readQuery({ query: QUERY_SKATESPOTS });
-        cache.writeQuery({
-          query: QUERY_SKATESPOTS,
-          data: { skateSpots: [addSkateSpot, ...skateSpots] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-
-      const { user } = cache.readQuery({ query: QUERY_PROFILE });
-      cache.writeQuery({
+    refetchQueries: [
+      {
         query: QUERY_PROFILE,
-        data: {
-          user: { ...user, skateSpots: [...user.skateSpots, addSkateSpot] },
-        },
-      });
-    },
+        awaitRefetchQueries: true,
+      },
+      {
+        query: QUERY_SKATESPOTS,
+        awaitRefetchQueries: true,
+      },
+    ],
   });
 
   const handleSkateSpot = async (e) => {
@@ -64,30 +58,32 @@ export default function NewSkateSpot() {
     } else if (name === "police_presence") {
       setforminfo({ ...formInfoState, [name]: value });
     } else if (name === "lighting") {
-      setforminfo({ ...formInfoState, [name]: value });
-    } else if (name === "pedestrian") {
-      setforminfo({ ...formInfoState, [name]: value });
+      setforminfo({ ...formInfoState, [name]: parseInt(value) });
+    } else if (name === "pedestrians") {
+      setforminfo({ ...formInfoState, [name]: parseInt(value) });
     } else if (name === "typeOf") {
       setforminfo({ ...formInfoState, [name]: value });
     }
   };
 
   return (
-    <div>
+    <div id="new">
       {Auth.loggedIn() ? (
         <>
-          <h2>Create a new skate spot</h2>
-          <Form onSubmit={handleSkateSpot}>
-            <Form.Group>
-              <Form.Input
-                fluid
-                label="Location (Required)"
+          <h2 className="newSkate">Create a new skate spot</h2>
+          <Form className="container" onSubmit={handleSkateSpot}>
+            <Form.Field>
+              <label>Location (required)</label>
+              <input
                 name="location"
                 value={formInfoState.location}
-                placeholder="Adress"
+                placeholder="Address"
                 onChange={handleSelect}
               />
-              <Form.Input
+            </Form.Field>
+            <Form.Field>
+              <label>Location Name (required)</label>
+              <input
                 fluid
                 label="Name of Location (Required)"
                 name="name"
@@ -95,59 +91,59 @@ export default function NewSkateSpot() {
                 placeholder="Name"
                 onChange={handleSelect}
               />
-            </Form.Group>
-            <Form.Group inline>
-              <label>Police Presence</label>
-              <Form.Checkbox
-                label="High"
-                name="police_presence"
-                value="Red"
-                checked={formInfoState.police_presence === "Red"}
-                onChange={handleSelect}
-              />
-              <Form.Checkbox
-                label="Medium"
-                name="police_presence"
-                value="Yellow"
-                checked={formInfoState.police_presence === "Yellow"}
-                onChange={handleSelect}
-              />
-              <Form.Checkbox
-                label="Light"
-                name="police_presence"
-                value="Green"
-                checked={formInfoState.police_presence === "Green"}
-                onChange={handleSelect}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Input
-                fluid
-                label="Lighting from 1 to 10, 10 is best"
+            </Form.Field>
+            <label>Police Presence</label>
+            <Form.Checkbox
+              label="High"
+              name="police_presence"
+              value="Red"
+              checked={formInfoState.police_presence === "Red"}
+              onChange={handleSelect}
+            />
+            <Form.Checkbox
+              label="Medium"
+              name="police_presence"
+              value="Yellow"
+              checked={formInfoState.police_presence === "Yellow"}
+              onChange={handleSelect}
+            />
+            <Form.Checkbox
+              label="Light"
+              name="police_presence"
+              value="Green"
+              checked={formInfoState.police_presence === "Green"}
+              onChange={handleSelect}
+            />
+            <Form.Field>
+              <label>Lighting  (1=low, 10=high)</label>
+              <input
                 name="lighting"
                 value={formInfoState.lighting}
                 placeholder="Lighting"
                 onChange={handleSelect}
               />
-              <Form.Input
-                fluid
-                label="Pedestrian Activity, from 1 to 10, 10 is high"
-                name="pedestrian"
-                value={formInfoState.pedestrian}
+            </Form.Field>
+            <Form.Field>
+              <label>Pedestrian Activity (1=low, 10=high)</label>
+              <input
+                name="pedestrians"
+                value={formInfoState.pedestrians}
                 placeholder="Pedestrian"
                 onChange={handleSelect}
               />
-              <Form.Input
-                fluid
-                label="Type of Place, ex: skatepark, library..."
+            </Form.Field>
+            <Form.Field>
+              <label>Type of Location</label>
+              <input
                 name="typeOf"
                 value={formInfoState.typeOf}
                 placeholder="Spot Type"
                 onChange={handleSelect}
               />
-            </Form.Group>
+            </Form.Field>
             <Form.Button
               disabled={!(formInfoState.location && formInfoState.name)}
+              id="submit"
             >
               Submit
             </Form.Button>

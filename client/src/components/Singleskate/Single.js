@@ -1,46 +1,56 @@
-import React from "react";
-import { Container, Header, List } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Card } from "semantic-ui-react";
 import { QUERY_SKATESPOT } from "../../Utils/queries";
+import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import "../Styles/single.css";
 
 export default function SingleSkate() {
-  const { loading, data } = useQuery(QUERY_SKATESPOT);
-  const skateSpot = data?.skateSpot || [];
+  let { skateSpotId } = useParams();
+  const { loading, data } = useQuery(QUERY_SKATESPOT, {
+    variables: { skateSpotId: skateSpotId },
+  });
+
+  const skateSpot = data?.skateSpot || {};
+
   return (
     <>
-      <div>
+      <div id="single">
         {loading ? (
-          <h3>Lodaing the Skate Spot...</h3>
+          <h3 className="loading3">Lodaing the Skate Spot...</h3>
         ) : (
-          skateSpot.map((spot) => (
-            <Container>
-              <Header size="large">{spot.name}</Header>
-              {/* <Image src='picture of spot' fluid /> */}
-              <Header size="small">Username</Header>
-              <List>
-                <List.Item>
-                  <List.Icon name="location" />
-                  <List.Content>{spot.location}</List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Icon name="police_presence" />
-                  <List.Content>{spot.police_presence}</List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Icon name="lighting" />
-                  <List.Content>{spot.lighting}</List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Icon name="pedestrians" />
-                  <List.Content>{spot.pedestrians}</List.Content>
-                </List.Item>
-                <List.Item>
-                  <List.Icon name="typeOf" />
-                  <List.Content>{spot.typeof}</List.Content>
-                </List.Item>
-              </List>
-            </Container>
-          ))
+          <div style={{ padding: "30px" }}>
+            <h2 className="key1">Key: 1=low, 10=high,</h2>
+            <h3 className="key2">Green=Low, Yellow=Medium, Red=High</h3>
+            <Card
+              id="card"
+              className="centered"
+              style={{
+                marginTop: "40px",
+                backgroundColor:
+                  skateSpot.police_presence[0] === "Green"
+                    ? "#00FF00"
+                    : skateSpot.police_presence[0] === "Yellow"
+                    ? "#FFFF00"
+                    : skateSpot.police_presence[0] === "Red"
+                    ? "#FF0000"
+                    : "#808080",
+                paddingBottom: "10px",
+              }}
+            >
+              <Card.Content id="name" header={skateSpot.name} />
+              <Card.Content header="Address"></Card.Content>
+              <Card.Content>{skateSpot.location}</Card.Content>
+              <Card.Content header="Police Presence"></Card.Content>
+              <Card.Content>{skateSpot.police_presence}</Card.Content>
+              <Card.Content header="Lighting"></Card.Content>
+              <Card.Content>{skateSpot.lighting}</Card.Content>
+              <Card.Content header="Pedestrians"></Card.Content>
+              <Card.Content>{skateSpot.pedestrians}</Card.Content>
+              <Card.Content header="Type of Place"></Card.Content>
+              <Card.Content>{skateSpot.typeOf}</Card.Content>
+            </Card>
+          </div>
         )}
       </div>
     </>

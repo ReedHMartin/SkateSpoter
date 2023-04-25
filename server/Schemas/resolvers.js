@@ -12,16 +12,17 @@ const resolvers = {
       }
       throw new AuthenticationError("please login");
     },
-    skatespots: async () => {
-      return await skateSpot.find();
+    skateSpots: async () => {
+      return await skateSpot.find().populate("userId");
     },
-    skatespot: async (parent, { skateSpotId }) => {
-      return await skateSpot.findOne({ _id: skateSpotId });
+    skateSpot: async (parent, { skateSpotId }) => {
+      return await skateSpot.findOne({ _id: skateSpotId }).populate("userId");
     },
   },
 
   Mutation: {
     addUser: async (parent, { username, email, password }) => {
+      console.log(username, email, password);
       const user = await User.create({ username, email, password });
       const token = signToken(user);
 
@@ -48,11 +49,20 @@ const resolvers = {
     },
     addSkateSpot: async (
       parent,
-      { location, name, lighting, police_presence, pedestrians, typeOf },
+      {
+        userId,
+        location,
+        name,
+        lighting,
+        police_presence,
+        pedestrians,
+        typeOf,
+      },
       context
     ) => {
       if (context.user) {
         const newSkateSpot = await skateSpot.create({
+          userId,
           location,
           name,
           lighting,
@@ -70,6 +80,18 @@ const resolvers = {
         return newSkateSpot;
       }
       throw new Error("You must be logged in to add a skate spot.");
+    },
+    deleteSkateSpot: async (parent, { skateSpotId }, context) => {
+      if (context.user) {
+        const skateSpotdelete = await skateSpot.findOneAndDelete({
+          _id: skateSpotId,
+        });
+        await User.findOneAndUpdate(
+          { id: context.user._id },
+          { $pull: { skateSpots: skateSpotdelete._id } }
+        );
+        return User;
+      }
     },
   },
 };

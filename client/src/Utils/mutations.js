@@ -24,14 +24,16 @@ export const ADD_USER = gql`
 
 export const ADD_SKATESPOT = gql`
   mutation addSkateSpot(
+    $userId: ID!
     $location: String!
     $name: String!
     $lighting: Int
-    $police_presence: Array
+    $police_presence: [String]
     $pedestrians: Int
-    $typeof: String!
+    $typeOf: String
   ) {
     addSkateSpot(
+      userId: $userId
       location: $location
       name: $name
       lighting: $lighting
@@ -45,6 +47,14 @@ export const ADD_SKATESPOT = gql`
       police_presence
       pedestrians
       typeOf
+    }
+  }
+`;
+
+export const DELETE_SKATE = gql`
+  mutation deleteSkateSpot($skateSpotId: ID!) {
+    deleteSkateSpot(skateSpotId: $skateSpotId) {
+      _id
     }
   }
 `;

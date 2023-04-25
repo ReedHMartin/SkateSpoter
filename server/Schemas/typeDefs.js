@@ -2,6 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
+    _id: ID
     username: String!
     email: String!
     password: String!
@@ -9,6 +10,8 @@ const typeDefs = gql`
   }
 
   type skateSpot {
+    _id: ID
+    userId: User
     location: String!
     name: String!
     lighting: Int
@@ -24,14 +27,14 @@ const typeDefs = gql`
 
   type Query {
     user: User
-    users: [User]
-    skatespots: [skateSpot]
-    skatespot(skateSpotId: ID!): skateSpot
+    skateSpots: [skateSpot]
+    skateSpot(skateSpotId: ID!): skateSpot
   }
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     addSkateSpot(
+      userId: ID!
       location: String!
       name: String!
       lighting: Int
@@ -39,6 +42,7 @@ const typeDefs = gql`
       pedestrians: Int
       typeOf: String
     ): skateSpot
+    deleteSkateSpot(skateSpotId: ID!): User
   }
 `;
 

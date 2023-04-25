@@ -1,0 +1,28 @@
+#single{
+  background-image: url("https://photos.app.goo.gl/dqeLyXc8ZVCnA95V9");
+}
+
+h2.key1 {
+  text-align: center;
+  margin-top: 40px;
+}
+
+h3.key2 {
+  
+  text-align: center;
+  margin-top: 40px;
+}
+
+h2.key1, h3.key2{
+  background-color: black;
+  color: white;
+}
+
+h3.loading3 {
+  text-align: center;
+}
+
+#card{
+  outline: 10px solid #d4a0a7;
+  outline-offset: 3px;
+}
