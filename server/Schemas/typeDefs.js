@@ -42,6 +42,7 @@ const typeDefs = gql`
       pedestrians: Int
       typeOf: String
     ): skateSpot
+    deleteSkateSpot(skateSpotId: ID!): User
   }
 `;
 

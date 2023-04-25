@@ -1,13 +1,35 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { Card, Button } from "semantic-ui-react";
 import { QUERY_PROFILE } from "../../Utils/queries";
+import { DELETE_SKATE } from "../../Utils/mutations";
 import { Link } from "react-router-dom";
 import "../Styles/profile.css";
 
 export default function Profile() {
-  const { loading, data } = useQuery(QUERY_PROFILE);
+  const { loading, data, refetch } = useQuery(QUERY_PROFILE);
+  const [deleteSkateSpot, { error }] = useMutation(DELETE_SKATE, {
+    refetchQueries: [
+      {
+        query: QUERY_PROFILE,
+        awaitRefetchQueries: true,
+      },
+    ],
+  });
+
   const user = data?.user || {};
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+
+    try {
+      await deleteSkateSpot({
+        variables: { skateSpotId: e.currentTarget.dataset.id },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div>
       {loading ? (
@@ -33,6 +55,9 @@ export default function Profile() {
                     <Link to={`/skateSpots/${use._id}`}>
                       <Button>See more</Button>
                     </Link>
+                    <Button data-id={use._id} onClick={handleDelete}>
+                      Delete
+                    </Button>
                   </div>
                 </Card.Content>
               </Card>
