@@ -50,3 +50,11 @@ export const ADD_SKATESPOT = gql`
     }
   }
 `;
+
+export const DELETE_SKATE = gql`
+  mutation deleteSkateSpot($skateSpotId: ID!) {
+    deleteSkateSpot(skateSpotId: $skateSpotId) {
+      _id
+    }
+  }
+`;

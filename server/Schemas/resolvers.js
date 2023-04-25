@@ -81,6 +81,18 @@ const resolvers = {
       }
       throw new Error("You must be logged in to add a skate spot.");
     },
+    deleteSkateSpot: async (parent, { skateSpotId }, context) => {
+      if (context.user) {
+        const skateSpotdelete = await skateSpot.findOneAndDelete({
+          _id: skateSpotId,
+        });
+        await User.findOneAndUpdate(
+          { id: context.user._id },
+          { $pull: { skateSpots: skateSpotdelete._id } }
+        );
+        return User;
+      }
+    },
   },
 };
 

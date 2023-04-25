@@ -10,19 +10,9 @@ export default function SingleSkate() {
   const { loading, data } = useQuery(QUERY_SKATESPOT, {
     variables: { skateSpotId: skateSpotId },
   });
-  const [cardColor, setCardColor] = useState("#808080");
-
-  const handleColor = (e) => {
-    if (skateSpot.police_presence === "Green") {
-      setCardColor("#00FF00");
-    } else if (skateSpot.police_presence === "Yellow") {
-      setCardColor("#FFFF00");
-    } else if (skateSpot.police_presence === "Red") {
-      setCardColor("#FF0000");
-    }
-  };
 
   const skateSpot = data?.skateSpot || {};
+
   return (
     <>
       <div>
@@ -36,7 +26,14 @@ export default function SingleSkate() {
               className="centered"
               style={{
                 marginTop: "40px",
-                backgroundColor: { cardColor },
+                backgroundColor:
+                  skateSpot.police_presence[0] === "Green"
+                    ? "#00FF00"
+                    : skateSpot.police_presence[0] === "Yellow"
+                    ? "#FFFF00"
+                    : skateSpot.police_presence[0] === "Red"
+                    ? "#FF0000"
+                    : "#808080",
                 paddingBottom: "10px",
               }}
             >
