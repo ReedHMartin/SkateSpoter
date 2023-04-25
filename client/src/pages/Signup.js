@@ -54,7 +54,7 @@ export default function SignUpPage() {
         </p>
       </div>
       <div>
-        <Form className="container" onSubmit={handleSubmit}>
+        <Form className="container" id="form" onSubmit={handleSubmit}>
           <Form.Field>
             <label>Username</label>
             <input
