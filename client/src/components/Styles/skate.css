@@ -3,9 +3,9 @@ body {
   background-image: url("https://photos.app.goo.gl/dqeLyXc8ZVCnA95V9");
 }
 
-#homepage{
+#homepage {
   color: antiquewhite;
-  
+
   backdrop-filter: blur(1px);
 }
 
@@ -13,7 +13,7 @@ h2.group {
   color: #bb6c73;
   font-weight: bold;
   font-size: 42px;
-  font-family: 'Bangers';
+  font-family: "Bangers";
   background-color: black;
   backdrop-filter: blur(1px);
   text-align: center;
@@ -23,19 +23,18 @@ h2.group {
 .ui.card {
   text-align: center;
   outline: 2px solid rgb(143, 127, 76);
-  
 }
 
-.ui.card:hover{
+.ui.card.sk8card:hover {
   box-shadow: inset 200px 0 100px 0 #3b1a1d;
   transition: ease-out 0.6s;
 }
 
-h3.loading2{
+h3.loading2 {
   text-align: center;
 }
 
-.ui.card.button{
+.ui.card.button {
   cursor: pointer;
   background-color: black;
   color: antiquewhite;

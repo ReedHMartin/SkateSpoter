@@ -51,12 +51,23 @@ export default function Profile() {
                   <Card.Description>{use.location}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                  <div className="ui button">
+                  <div>
                     <Link to={`/skateSpots/${use._id}`}>
-                      <Button>See more</Button>
+                      <Button
+                        style={{
+                          backgroundColor: "green",
+                          marginRight: "10px",
+                        }}
+                      >
+                        See more
+                      </Button>
                     </Link>
-                    <Button data-id={use._id} onClick={handleDelete}>
-                      Delete
+                    <Button
+                      style={{ backgroundColor: "red" }}
+                      data-id={use._id}
+                      onClick={handleDelete}
+                    >
+                      Break
                     </Button>
                   </div>
                 </Card.Content>

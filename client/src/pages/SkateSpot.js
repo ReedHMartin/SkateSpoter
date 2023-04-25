@@ -14,10 +14,11 @@ export default function SkateSpots() {
       {loading ? (
         <h3 className="loading2">Loading Skate Spots...</h3>
       ) : (
-        <div  className="card-container">
+        <div className="card-container">
           {skateSpots.map((skateSpot) => (
             <Card.Group className="centered" itemsPerRow={2} key={skateSpot.id}>
               <Card
+                className="sk8card"
                 style={{
                   backgroundColor: "#d4a0a7",
                   borderRadius: "80px",
@@ -32,7 +33,12 @@ export default function SkateSpots() {
                 <Card.Content extra>
                   <div className="ui centered alligned container">
                     <Link to={`/skateSpots/${skateSpot._id}`}>
-                      <Button class="cardBtn">See more</Button>
+                      <Button
+                        style={{ backgroundColor: "green" }}
+                        class="cardBtn"
+                      >
+                        See more
+                      </Button>
                     </Link>
                   </div>
                 </Card.Content>
