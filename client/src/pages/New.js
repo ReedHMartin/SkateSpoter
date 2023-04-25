@@ -19,24 +19,16 @@ export default function NewSkateSpot() {
   });
   const [wrongTwo, setWrongTwo] = useState("");
   const [addSkateSpot, { error }] = useMutation(ADD_SKATESPOT, {
-    update(cache, { data: { addSkateSpot } }) {
-      try {
-        const { skateSpots } = cache.readQuery({ query: QUERY_SKATESPOTS });
-        cache.writeQuery({
-          query: QUERY_SKATESPOTS,
-          data: { skateSpots: [addSkateSpot, ...skateSpots] },
-        });
-        const { user } = cache.readQuery({ query: QUERY_PROFILE });
-        cache.writeQuery({
-          query: QUERY_PROFILE,
-          data: {
-            user: { ...user, skateSpots: [...user.skateSpots, addSkateSpot] },
-          },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
+    refetchQueries: [
+      {
+        query: QUERY_PROFILE,
+        awaitRefetchQueries: true,
+      },
+      {
+        query: QUERY_SKATESPOTS,
+        awaitRefetchQueries: true,
+      },
+    ],
   });
 
   const handleSkateSpot = async (e) => {
