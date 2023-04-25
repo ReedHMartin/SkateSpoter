@@ -1,3 +1,81 @@
 .ui.menu {
-  background: #757676;
+  background: #d4a0a7;
+}
+
+#home{
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #311719;
+  transition: ease-out 0.5s;
+}
+
+#home:hover{
+  box-shadow: inset 200px 0 100px 0 #3b1a1d;
+  color: #ffffff;
+}
+
+#profile{
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #311719;
+  transition: ease-out 0.5s;
+}
+
+#profile:hover{
+  box-shadow: inset 200px 0 100px 0 #3b1a1d;
+  color: #ffffff;
+}
+
+#newspot{
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #311719;
+  transition: ease-out 0.5s;
+}
+
+#newspot:hover{
+  box-shadow: inset 200px 0 100px 0 #3b1a1d;
+  color: #ffffff;
+}
+
+#logout{
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #311719;
+  transition: ease-out 0.5s;
+}
+
+#logout:hover{
+  box-shadow: inset 200px 0 100px 0 #3b1a1d;
+  color: #ffffff;
+}
+
+#login{
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #311719;
+  transition: ease-out 0.5s;
+}
+
+#login:hover{
+  box-shadow: inset 200px 0 100px 0 #3b1a1d;
+  color: #ffffff;
+}
+
+#signup{
+  font-weight: bold;
+  font-size: larger;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #311719;
+  transition: ease-out 0.5s;
+}
+
+#signup:hover{
+  box-shadow: inset 200px 0 100px 0 #3b1a1d;
+  color: #ffffff;
 }

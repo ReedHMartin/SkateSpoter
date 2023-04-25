@@ -9,17 +9,17 @@ export default function SkateSpots() {
   const { loading, data } = useQuery(QUERY_SKATESPOTS);
   const skateSpots = data?.skateSpots || [];
   return (
-    <div>
+    <div id="homepage">
       <h2 className="group">Skate Spots!</h2>
       {loading ? (
         <h3 className="loading2">Loading Skate Spots...</h3>
       ) : (
-        <div className="card-container">
+        <div  className="card-container">
           {skateSpots.map((skateSpot) => (
             <Card.Group className="centered" itemsPerRow={2} key={skateSpot.id}>
               <Card
                 style={{
-                  backgroundColor: "#643c38",
+                  backgroundColor: "#d4a0a7",
                   borderRadius: "80px",
                   marginTop: "40px",
                 }}
@@ -32,7 +32,7 @@ export default function SkateSpots() {
                 <Card.Content extra>
                   <div className="ui centered alligned container">
                     <Link to={`/skateSpots/${skateSpot._id}`}>
-                      <Button>See more</Button>
+                      <Button class="cardBtn">See more</Button>
                     </Link>
                   </div>
                 </Card.Content>

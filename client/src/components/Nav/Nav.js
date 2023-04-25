@@ -18,6 +18,7 @@ export default function Navbar() {
           onClick={handleItemClick}
           as={Link}
           to="/"
+          id="home"
         />
         {Auth.loggedIn() ? (
           <>
@@ -27,6 +28,7 @@ export default function Navbar() {
               onClick={handleItemClick}
               as={Link}
               to="/profile"
+              id="profile"
             />
             <Menu.Item
               name="New Spot"
@@ -34,11 +36,13 @@ export default function Navbar() {
               onClick={handleItemClick}
               as={Link}
               to="/newspot"
+              id="newspot"
             />
             <Menu.Item
               name="Logout"
               active={activeItem === "Logout"}
               onClick={Auth.logout}
+              id="logout"
             />
           </>
         ) : (
@@ -49,6 +53,7 @@ export default function Navbar() {
               onClick={handleItemClick}
               as={Link}
               to="/login"
+              id="login"
             />
             <Menu.Item
               name="Sign Up"
@@ -56,6 +61,7 @@ export default function Navbar() {
               onClick={handleItemClick}
               as={Link}
               to="/signup"
+              id="signup"
             />
           </>
         )}

@@ -15,14 +15,14 @@ export default function SingleSkate() {
 
   return (
     <>
-      <div>
+      <div id="single">
         {loading ? (
           <h3 className="loading3">Lodaing the Skate Spot...</h3>
         ) : (
           <div>
             <h2 className="key1">Key: 1=low, 10=high,</h2>
             <h3 className="key2">Green=Low, Yellow=Medium, Red=High</h3>
-            <Card
+            <Card id="card"
               className="centered"
               style={{
                 marginTop: "40px",
@@ -37,8 +37,8 @@ export default function SingleSkate() {
                 paddingBottom: "10px",
               }}
             >
-              <Card.Content header={skateSpot.name} />
-              <Card.Content header="Adress"></Card.Content>
+              <Card.Content id="name" header={skateSpot.name} />
+              <Card.Content header="Address"></Card.Content>
               <Card.Content>{skateSpot.location}</Card.Content>
               <Card.Content header="Police Presence"></Card.Content>
               <Card.Content>{skateSpot.police_presence}</Card.Content>

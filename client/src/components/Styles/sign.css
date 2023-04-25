@@ -1,6 +1,9 @@
 h2.join {
   text-align: center;
   margin-top: 40px;
+  font-size: 36px;
+  font-family: 'Bangers', cursive;
+  font-stretch: extra-expanded;
 }
 
 p.high {

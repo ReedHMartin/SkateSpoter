@@ -75,17 +75,17 @@ export default function NewSkateSpot() {
   };
 
   return (
-    <div>
+    <div id="new">
       {Auth.loggedIn() ? (
         <>
           <h2 className="newSkate">Create a new skate spot</h2>
           <Form className="container" onSubmit={handleSkateSpot}>
             <Form.Field>
-              <label>Location(required)</label>
+              <label>Location (required)</label>
               <input
                 name="location"
                 value={formInfoState.location}
-                placeholder="Adress"
+                placeholder="Address"
                 onChange={handleSelect}
               />
             </Form.Field>
@@ -123,7 +123,7 @@ export default function NewSkateSpot() {
               onChange={handleSelect}
             />
             <Form.Field>
-              <label>Lighting, 1=low, 10=high</label>
+              <label>Lighting  (1=low, 10=high)</label>
               <input
                 name="lighting"
                 value={formInfoState.lighting}
@@ -132,7 +132,7 @@ export default function NewSkateSpot() {
               />
             </Form.Field>
             <Form.Field>
-              <label>Pedestrian Activity, 1=low, 10=high</label>
+              <label>Pedestrian Activity (1=low, 10=high)</label>
               <input
                 name="pedestrians"
                 value={formInfoState.pedestrians}
@@ -151,6 +151,7 @@ export default function NewSkateSpot() {
             </Form.Field>
             <Form.Button
               disabled={!(formInfoState.location && formInfoState.name)}
+              id="submit"
             >
               Submit
             </Form.Button>
