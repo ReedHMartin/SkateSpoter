@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { ADD_SKATESPOT } from "../Utils/mutations";
+import { Link } from "react-router-dom";
 import { QUERY_PROFILE, QUERY_SKATESPOTS } from "../Utils/queries";
 import Auth from "../Utils/auth";
 import "../components/Styles/new.css";
@@ -37,6 +38,7 @@ export default function NewSkateSpot() {
       await addSkateSpot({
         variables: { ...formInfoState },
       });
+      window.location.href = "/profile";
     } catch (error) {
       console.error(error);
       setWrongTwo("please make sure you have filled the info out correctly");
@@ -115,7 +117,7 @@ export default function NewSkateSpot() {
               onChange={handleSelect}
             />
             <Form.Field>
-              <label>Lighting  (1=low, 10=high)</label>
+              <label>Lighting (1=low, 10=high)</label>
               <input
                 name="lighting"
                 value={formInfoState.lighting}
@@ -147,6 +149,7 @@ export default function NewSkateSpot() {
             >
               Submit
             </Form.Button>
+
             {wrongTwo && <h4>{wrongTwo}</h4>}
           </Form>
         </>
