@@ -27,8 +27,6 @@ export default function SignUpPage() {
       userAuth(signupForm.username) &&
       signupForm.password
     ) {
-      console.log(signupForm);
-      console.log("New User made successfully!!");
       try {
         const { data } = await addUser({
           variables: { ...signupForm },

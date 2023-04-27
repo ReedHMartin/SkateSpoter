@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "production") {
   ap.use(express.static(path.join(__dirname, "../client/build")));
 }
 
-ap.get("/", (req, res) => {
+ap.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
