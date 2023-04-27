@@ -8,7 +8,6 @@ import Auth from "../Utils/auth";
 import "../components/Styles/new.css";
 
 export default function NewSkateSpot() {
-  console.log(Auth.getProfile().data._id);
   const [formInfoState, setforminfo] = useState({
     userId: Auth.getProfile().data._id,
     location: "",
@@ -40,10 +39,8 @@ export default function NewSkateSpot() {
       });
       window.location.href = "/profile";
     } catch (error) {
-      console.error(error);
       setWrongTwo("please make sure you have filled the info out correctly");
     }
-    console.log(formInfoState);
   };
 
   const handleSelect = (e) => {
