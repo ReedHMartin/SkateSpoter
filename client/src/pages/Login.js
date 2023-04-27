@@ -32,8 +32,6 @@ export default function Login() {
       console.error(error);
       setWrongOne("something is wrong");
     }
-
-    console.log("Email:", loginInf.email, "Password:", loginInf.password);
   };
 
   return (
