@@ -5,28 +5,32 @@ import { ADD_USER } from "../Utils/mutations";
 import { Form, Button } from "semantic-ui-react";
 import "../components/Styles/sign.css";
 import Author from "../Utils/auth";
-
+// sets signup email
 export default function SignUpPage() {
   const [signupForm, setSignupForm] = useState({
     email: "",
     username: "",
     password: "",
   });
+  // sets user as deafult empty
   const [wrongThree, setWrongThree] = useState("");
+  // adds user mutation
   const [addUser, { error }] = useMutation(ADD_USER);
-
+  // handles change
   const handleChanges = (e) => {
     const { name, value } = e.target;
     setSignupForm({ ...signupForm, [name]: value });
   };
-
+  // handles submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // if email and username mathces regex, and a password is entered
     if (
       emailAuth(signupForm.email) &&
       userAuth(signupForm.username) &&
       signupForm.password
     ) {
+      // is data and adds user from the sign up form, adds user token
       try {
         const { data } = await addUser({
           variables: { ...signupForm },

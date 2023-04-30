@@ -6,16 +6,20 @@ import { useQuery } from "@apollo/client";
 import "../Styles/single.css";
 
 export default function SingleSkate() {
+  // destructers ids form use params
   let { skateSpotId } = useParams();
+  // gets loading and data from skate spot
   const { loading, data } = useQuery(QUERY_SKATESPOT, {
+    // sets skatespotid to skatespotid
     variables: { skateSpotId: skateSpotId },
   });
-
+  // sets skatespot to data, if there is data return data and returns object
   const skateSpot = data?.skateSpot || {};
 
   return (
     <>
       <div id="single">
+        {/* if loading returns loading */}
         {loading ? (
           <h3 className="loading3">Lodaing the Skate Spot...</h3>
         ) : (

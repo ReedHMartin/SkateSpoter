@@ -11,14 +11,14 @@ export default function Login() {
     password: "",
   });
   const [wrongOne, setWrongOne] = useState("");
-
+  // uses login mutation
   const [login, { error }] = useMutation(LOGIN);
-
+  // destructeres name and value from e.target and sets the login
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLogin({ ...loginInf, [name]: value });
   };
-
+  // if login is valid it sets a token
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {

@@ -6,7 +6,7 @@ import "../Styles/nav.css";
 
 export default function Navbar() {
   const [activeItem, setActiveItem] = useState("");
-
+  // sets item to name and renders aproprite page
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
   return (

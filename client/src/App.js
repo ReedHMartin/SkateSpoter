@@ -16,11 +16,11 @@ import NewSkateSpot from "./pages/New";
 import Login from "./pages/Login";
 import Sign from "./pages/Signup";
 import SingleSkate from "./components/Singleskate/Single";
-
+// creates link using graphql uri
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
-
+// sets context gets id token from local storage
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
@@ -30,12 +30,12 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
+// sets up in memory cahce concat httplink
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
+// renders the app and sets up the rotues
 function App() {
   return (
     <ApolloProvider client={client}>
