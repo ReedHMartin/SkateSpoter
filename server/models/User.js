@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 const bcrypt = require("bcrypt");
-
+// sets up user schema
 const userSchema = new Schema({
   username: {
     type: String,

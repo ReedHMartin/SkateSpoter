@@ -1,5 +1,5 @@
 const { gql } = require("apollo-server-express");
-
+// sets up users and skatespot type defs and auth type defs
 const typeDefs = gql`
   type User {
     _id: ID

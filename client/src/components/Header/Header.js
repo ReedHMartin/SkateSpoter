@@ -2,6 +2,7 @@ import React from "react";
 import "../Styles/header.css";
 
 export default function Header() {
+  // renders header
   return (
     <div className="skateheader">
       <h1 className="skate1">The Skate Spot!</h1>

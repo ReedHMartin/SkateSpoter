@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { QUERY_PROFILE, QUERY_SKATESPOTS } from "../Utils/queries";
 import Auth from "../Utils/auth";
 import "../components/Styles/new.css";
-
+// sets variables for a new skate spots
 export default function NewSkateSpot() {
   const [formInfoState, setforminfo] = useState({
     userId: Auth.getProfile().data._id,
@@ -18,6 +18,7 @@ export default function NewSkateSpot() {
     typeOf: "",
   });
   const [wrongTwo, setWrongTwo] = useState("");
+  // refetch queries to update cache
   const [addSkateSpot, { error }] = useMutation(ADD_SKATESPOT, {
     refetchQueries: [
       {
@@ -30,7 +31,7 @@ export default function NewSkateSpot() {
       },
     ],
   });
-
+  // adds skate spot variables to info state, if successfull, reroutes to profile
   const handleSkateSpot = async (e) => {
     e.preventDefault();
     try {
@@ -42,7 +43,7 @@ export default function NewSkateSpot() {
       setWrongTwo("please make sure you have filled the info out correctly");
     }
   };
-
+  // checks to see which checkbox is checked, if the checkbox is selecting a div, have it select div
   const handleSelect = (e) => {
     let element = e.currentTarget;
     if (element.matches("div.checkbox")) {
@@ -66,6 +67,7 @@ export default function NewSkateSpot() {
   };
 
   return (
+    // displays page if logged in
     <div id="new">
       {Auth.loggedIn() ? (
         <>

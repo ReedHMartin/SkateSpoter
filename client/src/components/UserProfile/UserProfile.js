@@ -8,8 +8,11 @@ import Auth from "../../Utils/auth";
 import "../Styles/profile.css";
 
 export default function Profile() {
+  // queries skatespot
   const { loading, data, refetch } = useQuery(QUERY_PROFILE);
+  // deletes skate spot
   const [deleteSkateSpot, { error }] = useMutation(DELETE_SKATE, {
+    // refethces queries to update cache
     refetchQueries: [
       {
         query: QUERY_PROFILE,
@@ -17,12 +20,12 @@ export default function Profile() {
       },
     ],
   });
-
+  // if there is user data, return, if not return an empty object
   const user = data?.user || {};
 
   const handleDelete = async (e) => {
     e.preventDefault();
-
+    //  gets skeate spot id and deletes skate spot
     try {
       await deleteSkateSpot({
         variables: { skateSpotId: e.currentTarget.dataset.id },
@@ -32,6 +35,7 @@ export default function Profile() {
     }
   };
   return (
+    // if logged in sees the page
     <>
       {Auth.loggedIn() ? (
         <div>

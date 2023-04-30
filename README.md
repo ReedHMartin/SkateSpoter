@@ -1,15 +1,17 @@
 # SkateSpotter
 
+## Description
+
 A message board-style application for skaters, for the purpose of discovering and sharing locations that have something for those who skate.
 
-Not limited to strictly skateboards, SkateSpotter enables a network of enthusiasts to share locations that have unique surfaces, potential trick surfaces, or "situational awareness" commentary.  These locations can include:
+Not limited to strictly skateboards, SkateSpotter enables a network of enthusiasts to share locations that have unique surfaces, potential trick surfaces, or "situational awareness" commentary. These locations can include:
 
-* Unique features like rails or ramps.
-* Public skate parks.
-* How adequate the lighting is.
-* Grading the security presence there might be.
-* Location address for independent searching (sorry, no map functions yet).
-* And more!
+- Unique features like rails or ramps.
+- Public skate parks.
+- How adequate the lighting is.
+- Grading the security presence there might be.
+- Location address for independent searching (sorry, no map functions yet).
+- And more!
 
 Future plans include potential monetization via ads or placed sponsorships, potential photos of the locations (especially helpful if the address is not known), commentary on others' offered locations, and recommended skill levels.
 
@@ -17,74 +19,21 @@ This has been created by several skating enthusiasts, with an eye towards what s
 
 Please note: you will need to create an account to use this app, but it is recommended to use your handle instead of name.
 
+## Installation
 
-# Getting Started with Create React App
+In order to run on local please install, React, express, apollo-server-express, node, bcrypt, dotenv, graphql, jsonwebtoken, mongoose, nodemon,and babel.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Usage
 
-## Available Scripts
+Signup and create a skate spot. If you would like to see a single skate spot, click on "see more". To delete a skate spot, go to your profile and delete click "break". Click on the logout button to logout.
 
-In the project directory, you can run:
+![image of webpage](./client/public/images/skatespot.png)
+https://skatespotter.herokuapp.com/
 
-### `npm start`
+## Credits
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+N/A
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## License
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+N/A

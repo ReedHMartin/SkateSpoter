@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-
+// gets user and skate spots
 export const QUERY_PROFILE = gql`
   query user {
     user {
