@@ -20,7 +20,7 @@ ap.use(express.json());
 if (process.env.NODE_ENV === "production") {
   ap.use(express.static(path.join(__dirname, "../client/build")));
 }
-// gets pages
+// gets pages, no matther what routes, sends index.html
 ap.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
