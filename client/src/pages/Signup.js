@@ -78,7 +78,7 @@ export default function SignUpPage() {
             />
           </Form.Field>
           <Form.Field>
-            <label>Email</label>
+            <label>Password</label>
             <input
               type="password"
               name="password"

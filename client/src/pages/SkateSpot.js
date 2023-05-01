@@ -7,7 +7,9 @@ import "../components/Styles/skate.css";
 // renders skate spors
 export default function SkateSpots() {
   // Queries skate spots
-  const { loading, data } = useQuery(QUERY_SKATESPOTS);
+  const { loading, data, refetch } = useQuery(QUERY_SKATESPOTS);
+
+  refetch();
   // if there is data return skatespots, if not, return empty array
   const skateSpots = data?.skateSpots || [];
   return (
