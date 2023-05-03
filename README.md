@@ -2,6 +2,8 @@
 
 ## Description
 
+Contributors: Reed Martin, Zach Zurawski, Lucas Bielinski, and Jeremy Hopkins
+
 A message board-style application for skaters, for the purpose of discovering and sharing locations that have something for those who skate.
 
 Not limited to strictly skateboards, SkateSpotter enables a network of enthusiasts to share locations that have unique surfaces, potential trick surfaces, or "situational awareness" commentary. These locations can include:
