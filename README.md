@@ -30,7 +30,7 @@ In order to run on local please install, React, express, apollo-server-express, 
 Signup and create a skate spot. If you would like to see a single skate spot, click on "see more". To delete a skate spot, go to your profile and delete click "break". Click on the logout button to logout.
 
 ![image of webpage](./client/public/images/skatespot.png)
-https://skatespotter.herokuapp.com/
+https://skatespot-17f1fc3fbb2d.herokuapp.com/
 
 ## Credits
 
